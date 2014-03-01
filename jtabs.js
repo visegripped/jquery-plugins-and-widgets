@@ -1,11 +1,7 @@
 // JavaScript Document
-console.log(' -> file is loaded');
 $.widget("custom.jtabs",{
 	options : {
 		'persist' : false //if enabled, will remember which tab was last open. If multiple tab sets are in use, set value to a descriptor instead of just 'true'. ex: 'homepage' or 'product'
-		},
-	_init : function()	{
-		console.log(" -> init was run");
 		},
 	_create : function()	{
 		var self = this,
@@ -37,7 +33,6 @@ $.widget("custom.jtabs",{
 
 	_handleDefaultTab : function()	{
 		var o = this.options;
-		console.log("BEGIN _handleDefaultTab");
 //if no anchor is set, activate the default.
 		if(o.persist)	{
 			var theAnchor;
@@ -46,7 +41,6 @@ $.widget("custom.jtabs",{
 				theAnchor = window.localStorage.getItem('jtabs'+(this.options.persist === true ? "" : "_"+this.options.persist));
 				}
 			catch(e)	{}
-			console.log(" -> theAnchor: "+theAnchor);
 			if(theAnchor && $("li[data-jtabs-tab='"+theAnchor+"']",this.element).length)	{
 				this.reveal($("li[data-jtabs-tab='"+theAnchor+"']",this.element));
 				}
@@ -117,7 +111,6 @@ $.widget("custom.jtabs",{
 			this.tabContent.find('.ui-tabs-panel').hide();
 			$("[data-jtab-content='"+dac+"']",this.tabContent).show();
 			if(o.persist)	{
-				console.log(" -> dac: "+dac);
 				this._setTabInLS(dac);
 				}
 			}
@@ -152,7 +145,6 @@ $.widget("custom.jtabs",{
 
 //clear the message entirely. run after a close. removes element from DOM.
 	_destroy : function(){
-		console.log(" -> got to destroy");
 		this.element.removeClass("ui-tabs ui-widget ui-widget-jtabs");
 		this.element.removeData("jtabs");
 		$('li',this.tabs).each(function(){
