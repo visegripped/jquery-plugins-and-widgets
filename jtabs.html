@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jtabs -> a non-id based tab script.</title>
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/pepper-grinder/jquery-ui.css" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="jtabs.js"></script>
+
+</head>
+
+<body>
+
+<p>
+A tab script that is NOT id based, which makes it more template friendly that the native jQuery UI tab script. Additionally, persistence is maintained through local storage and NOT through changing the hash, making the tab script more friendly for a web-app which may use hash change events for navigation purposes.
+</p>
+
+
+<div class='tab-container' id='tabs'>
+	<ul>
+		<li><a href='#content1'>Tab 1</a></li>
+		<li><a href='#content2'>Tab 2</a></li>
+		<li><a href='#content3'>Tab 3</a></li>
+		<li><a href='#content4'>Tab 4</a></li>
+	</ul>
+
+	<div data-jtab-content='content1'>
+	Bacon ipsum dolor sit amet beef ribs flank turkey, boudin t-bone porchetta ham hock pig jowl capicola. Landjaeger t-bone ham jowl salami short ribs jerky meatball bacon bresaola pork belly hamburger chicken short loin ribeye. Spare ribs fatback ham hock salami tenderloin, sausage porchetta rump. Pork sirloin pork loin bresaola bacon short loin brisket beef ribs tail jerky pork belly. Shankle pork tongue short loin, pancetta sirloin tail swine corned beef kevin biltong meatloaf filet mignon.
+	</div>
+	
+	<div data-jtab-content='content2'>
+	Ground round ham hock pork ham, filet mignon spare ribs ball tip kevin. Venison kevin tri-tip jowl, cow frankfurter doner. Short ribs flank andouille short loin porchetta capicola drumstick. Flank sirloin tongue, kielbasa spare ribs beef tri-tip filet mignon jerky bresaola shoulder strip steak hamburger shankle landjaeger.
+	</div>
+	
+	<div data-jtab-content='content3'>
+	Short ribs ball tip tenderloin turkey fatback beef pork loin chuck frankfurter prosciutto. Pork chop bacon doner, ball tip kielbasa flank jowl ground round sirloin meatball strip steak. Corned beef leberkas strip steak bacon, tri-tip kevin porchetta doner pastrami t-bone tail prosciutto ham spare ribs drumstick. Pork belly corned beef fatback tri-tip tenderloin. Strip steak meatball short loin shoulder beef ribs ball tip landjaeger prosciutto tenderloin t-bone spare ribs.
+	</div>
+	
+	<div data-jtab-content='content4'>
+	Ball tip leberkas brisket, ground round meatloaf short loin ham hock rump kevin shankle corned beef jerky spare ribs short ribs pig. Tenderloin meatball shoulder bacon flank shank strip steak beef ribs. Chicken brisket bresaola swine kielbasa ball tip, ham rump salami meatball doner pastrami flank sirloin. Pork loin chicken ball tip meatloaf tri-tip ground round t-bone spare ribs drumstick andouille. Rump ball tip tail ground round andouille drumstick prosciutto. Strip steak ball tip pancetta turducken, kevin pork loin tail pork belly flank. Cow ribeye pork corned beef venison turducken chuck doner pork loin meatloaf.
+	</div>
+
+</div>
+
+
+<button id='destroy'>Destroy</button>
+<button id='tab2'>Show tab 2 by index</button>
+<button id='tab3'>Show tab 3 by anchor</button>
+<button id='tab4'>Show tab 1 by jQuery instance</button>
+
+
+<script type='text/javascript'>
+(function ( $ ) {
+	console.log('jquery is loaded. tabs.length: '+$('#tabs').length);
+	$('#tabs').jtabs({persist:true});
+	$('#destroy').button().on('click',function(){
+		$('#tabs').jtabs('destroy');
+		});
+	$('#tab2').button().on('click',function(){
+		$('#tabs').jtabs('reveal',1);
+		});
+	$('#tab3').button().on('click',function(){
+		$('#tabs').jtabs('reveal',"content3");
+		});
+	$('#tab4').button().on('click',function(){
+		$('#tabs').jtabs('reveal',$('li:eq(0)'));
+		});
+}( jQuery ));
+</script>
+
+</body>
+</html>
