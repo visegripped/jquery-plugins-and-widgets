@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>jpanel -> create an extensible panel.</title>
+
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/pepper-grinder/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="jpanel.css">
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript" src="jpanel.js"></script>
+
+<style>
+body,html	{font-size:90%; font-familY:Arial, Helvetica, sans-serif;}
+</style>
+
+</head>
+
+<body>
+
+<p>
+jpanel allows for the easy creation of panels, having a similar look to the jQuery UI accordion, but allowing for multiple panels to be open at the same time.  The panels also allow for persistence, so if you close a panel then refresh the page, that panel will remain closed (if persistence is enabled).
+</p>
+
+
+<div id='panel1'>
+	<h2>Content and header existed on DOM</h2>
+	<div>
+	This panel contents reside on the dom prior to jpanel being run over it. Kevin strip steak hamburger porchetta drumstick landjaeger. Pork belly short ribs sausage, chicken pastrami venison tail swine. Chicken meatloaf pastrami frankfurter. Short ribs tongue swine meatloaf. Venison porchetta andouille swine jerky corned beef. Short loin chuck tri-tip, sirloin venison beef ribs porchetta capicola ribeye ham hock pork chop. Spare ribs strip steak venison pork chop short loin chuck.
+	</div>
+</div>
+
+
+
+
+<div id='panel3'>
+	<h2>Extra buttons in header.</h2>
+	<div>
+	Hamburger porchetta sausage short ribs, pancetta venison pig biltong. Turkey sausage short ribs sirloin landjaeger strip steak filet mignon hamburger beef ribs. Sirloin pastrami pig meatloaf pork belly. Pastrami doner landjaeger, ground round spare ribs jerky filet mignon tri-tip andouille venison chuck chicken sirloin turducken ribeye. Kielbasa strip steak rump landjaeger capicola tongue pig porchetta meatloaf cow. Sirloin corned beef beef ribs ham bacon, meatball brisket. Andouille sausage rump ball tip, filet mignon pancetta turkey hamburger pork loin tri-tip biltong beef ribs.
+	</div>
+</div>
+
+
+
+<br />
+
+<button id='destroy1'>Destroy Panel 1</button>
+<button id='destroy2'>Destroy Panel 2</button>
+
+<br />
+
+<script type='text/javascript'>
+(function ( $ ) {
+	console.log(' got to here ');
+	$("#panel1").jpanel({
+		"defaultState" : "show",
+		"persist" :true
+		});
+
+	$("#panel3").jpanel({
+		"defaultState" : "show",
+		"persist" :true,
+		"buttons" : [
+			$("<button \/>").text('alert').button().on('click',function(){alert('woot!')}),
+			$("<button \/>").text('console').button().on('click',function(){console.log('Well, I suppose I could hotwire this thing.')})
+			]
+		});
+
+	$("<div \/>",{'id':'panel2'}).insertAfter('#panel1').jpanel({'header':'Dynamically created panel','content':'For this entire panel, everything was created programatically. The header and content are passed in as strings. If you were to destroy this panel, no content would remain on the dom.','persist':true,'name':'panel2'});
+
+	$('#destroy1').button().on('click',function(){
+		$('#panel1').jpanel('destroy');
+		});
+	$('#destroy2').button().on('click',function(){
+		$('#panel2').jpanel('destroy');
+		});
+}( jQuery ));
+</script>
+
+</body>
+</html>
