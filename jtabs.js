@@ -1,4 +1,3 @@
-// JavaScript Document
 $.widget("custom.jtabs",{
 	options : {
 		'persist' : false //if enabled, will remember which tab was last open. If multiple tab sets are in use, set value to a descriptor instead of just 'true'. ex: 'homepage' or 'product'
@@ -8,12 +7,10 @@ $.widget("custom.jtabs",{
 		o = self.options, //shortcut
 		$t = self.element; //this is the targeted element (ex: $('#bob').jtabs() then $t is bob)
 
-		if($t.data('jtabs'))	{
-//				dump("data-widget-jtabs -> already enabled.");
-			} //element has already been set as tabs.
+		if($t.data('jtabs'))	{} //element has already been set as tabs.
 		else	{
 			$t.data('jtabs',true)
-			$t.addClass('ui-tabs ui-widget ui-widget-jtabs');
+			$t.addClass('ui-tabs ui-widget ui-jtabs');
 			self.tabs = $("ul",$t).first();
 //style and move tabs into container.
 			self._handleContent();
@@ -145,7 +142,7 @@ $.widget("custom.jtabs",{
 
 //clear the message entirely. run after a close. removes element from DOM.
 	_destroy : function(){
-		this.element.removeClass("ui-tabs ui-widget ui-widget-jtabs");
+		this.element.removeClass("ui-tabs ui-widget ui-jtabs");
 		this.element.removeData("jtabs");
 		$('li',this.tabs).each(function(){
 			$(this).removeClass('ui-state-default ui-state-active ui-corner-top').find('a').removeClass('ui-tabs-anchor');
