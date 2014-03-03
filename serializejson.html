@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>serializeJSON</title>
+
+<link rel="stylesheet" type="text/css" href="demo.css">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/pepper-grinder/jquery-ui.css" />
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="serializejson.js"></script>
+
+<style>
+body,html	{font-family:Arial, Helvetica, sans-serif; font-size: 90%;}
+form	{margin-bottom:1em; width:45%;}
+fieldset	{margin-bottom:.5em;}
+#output	{width:45%; float:right; background:#cccccc; padding:1em;}
+.indent	{padding-left:2em;}
+.edited	{background:#FFC;}
+</style>
+
+</head>
+<body>
+
+<h1>SerializeJSON</h1>
+<h2>Type: jQuery Plugin</h2>
+
+<p>The serializeJSON plugin will serialize a form into a hash.  There are other plugins out that that are very similar, but I had some specific needs to meet:</p>
+<ol>
+	<li>Blank values to be returned as blank, not null or false.</li>
+	<li>Ability to convert checkbox values to booleans.</li>
+	<li>Run on any element type, not just forms.</li>
+	<li>Allow a selector for acquiring a subset of inputs.</li>
+</ol>
+<p>Due to the nature of what serializeJSON returns, is is not chainable.</p>
+<div id='output'></div>
+
+<form id='form1'>
+<fieldset>
+	<legend>form 1, fieldset 1</legend>
+	<div><input type='text' placeholder='first name' name='firstname'  value='' /></div>
+	<div><input type='text' placeholder='last name' name='lastname'  value=''  /></div>
+	<div><input type='text' name='company' placeholder='company' value='' /></div>
+	<div><label><input type='checkbox' name='checkbox' checked='checked' value='' /> Checkboxes returned as boolean</label></div>
+</fieldset>
+
+<fieldset>
+	<legend>form 1, fieldset 2</legend>
+	<div><input type='text' name='address1' placeholder='address'  value='' /></div>
+	<div><input type='text' name='address2' placeholder='address 2' value='' /></div>
+	<div><input type='text' name='city' placeholder='city'  value='' /></div>
+	<div><input type='text'  name='region' placeholder='state/region'  size='5' value='' maxlength='20' /></div>
+	<div><input type='text'  name='postal' placeholder='zip/postal code'  size='14' value='' maxlength='10' /></div>
+	<div><select name='countrycode' placeholder='country'>
+		<option value="usa">US</option>
+		<option value="canada">Canada</option>
+		<option value="mexico">Mexico</option>
+	</select></div>
+</fieldset>
+<input type='submit' value='Serialize' /> <button id='button1'>Serialize Fieldset 1</button> <button id='button2'>Serialize Edited in Form 1</button>
+</form>
+
+<form action="#" id="form2">
+<input name="msgtype" value="feedback" type="hidden">
+<fieldset>
+	<legend>Form 2</legend>
+	<div><label><input name="sender"  placeholder='Email Address' type="email"></label></div>
+	<div><label><input name="subject"  placeholder='Subject' type="text"></label></div>
+	<div><label><textarea name="body"  placeholder='message'></textarea></label></div>
+	<div><label><input type='checkbox' name='checkbox' checked='checked' value='' /> Checkboxes returned as 'on'</label></div>
+</fieldset>
+<input type='submit' value='Serialize' />
+</form>
+
+<script type='text/javascript'>
+(function ( $ ) {
+	//add a class to any changed field, allowing for only changed elements to be serialized, if desired.
+	$(':input').on('change.edited',function(){
+		if(this.value != this.defaultValue)	{$(this).addClass('edited');}
+		});
+	
+	$("button, input[type='submit']").button();
+
+	function output(obj)	{
+		var o;
+		if($.isEmptyObject(obj))	{
+			o = "No elements in form/subset (try changing an input value)."
+			}
+		else	{
+			o = "{<br \/>";
+			for (var i in obj) {
+				o += "<div class='indent'>&quot;"+ i + "&quot; : &quot;" + obj[i] + "&quot;,<\/div>";
+				}
+			o += "}"
+			}
+		$('#output').html(o);
+		}
+	
+	$('#form1').on('submit',function(event){
+		event.preventDefault();
+		var sfo = $(this).serializeJSON({'sanity':true});
+		output(sfo);
+		});
+	
+	$('#form2').on('submit',function(event){
+		event.preventDefault();
+		var sfo = $(this).serializeJSON();
+		output(sfo);
+		});
+
+	$('#button1').on('click',function(event){
+		event.preventDefault();
+		var sfo = $('fieldset:first','#form1').serializeJSON({'sanity':true});
+		output(sfo);
+		});
+	$('#button2').on('click',function(event){
+		event.preventDefault();
+		var sfo = $('fieldset:first','#form1').serializeJSON({'sanity':true,'selector':'.edited'});
+		output(sfo);
+		});
+}( jQuery ));
+</script>
+
+
+</body>
+</html>
