@@ -41,5 +41,5 @@ $.fn.serializeJSON = function(options){
 			json[this.name] = this.value;
 			}
 		})
-	return this;
+	return json;
 	}
