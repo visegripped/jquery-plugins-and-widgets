@@ -1,0 +1,273 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>StickyTab</title>
+
+<link rel="stylesheet" type="text/css" href="demo.css">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/themes/pepper-grinder/jquery-ui.css" />
+<link rel="stylesheet" type="text/css" href="stickytab.css">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script src="stickytab.js"></script>
+
+</head>
+<body>
+
+<h1>StickyTab</h1>
+<h2>Type: jQuery UI Widget</h2>
+
+<p></p>
+
+<!--
+<div class='ui-widget ui-stickytab'>
+	<div class='ui-stickytab-inner'>
+		<div class='ui-stickytab-tab ui-state-default ui-corner-top'><span class='ui-sticktab-tab-inner'>tab</span></div>
+		<div class='ui-widget-content ui-stickytab-content'>content</div>	
+	</div>
+</div>
+-->
+<br>
+
+
+
+
+<table id='table1'>
+<thead class='ui-state-default'>
+<tr>
+	<th>Column 1</th>
+	<th>Column 2</th>
+	<th>Column 3</th>
+	<th>Column 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Bacon ipsum</td>
+	<td>dolor sit</td>
+	<td>amet</td>
+	<td>Pork</td>
+</tr>
+<tr>
+	<td>ham</td>
+	<td>shoulder </td>
+	<td>Tongue </td>
+	<td>cow </td>
+</tr>
+<tr>
+	<td>bresaola </td>
+	<td>strip </td>
+	<td>steak </td>
+	<td>mignon </td>
+</tr>
+<tr>
+	<td>Short </td>
+	<td><a href='#' title='illustrates the stickytab closing when a link within the table is clicked.'>shank</a></td>
+	<td>t-bone shoulder</td>
+	<td>swine</td>
+</tr>
+<tr>
+	<td>fatback</td>
+	<td>bitlong</td>
+	<td>rump</td>
+	<td>corned beef</td>
+</tr><tr>
+	<td>Bacon ipsum</td>
+	<td>dolor sit</td>
+	<td>amet</td>
+	<td>Pork</td>
+</tr>
+<tr>
+	<td>ham</td>
+	<td>shoulder </td>
+	<td>Tongue </td>
+	<td>cow </td>
+</tr>
+<tr>
+	<td>bresaola </td>
+	<td>strip </td>
+	<td>steak </td>
+	<td>mignon </td>
+</tr>
+<tr>
+	<td>Short </td>
+	<td><a href='#' title='illustrates the stickytab closing when a link within the table is clicked.'>shank</a></td>
+	<td>t-bone shoulder</td>
+	<td>swine</td>
+</tr>
+<tr>
+	<td>fatback</td>
+	<td>bitlong</td>
+	<td>rump</td>
+	<td>corned beef</td>
+</tr>
+</tbody>
+</table>
+
+<table id='table2'>
+<thead class='ui-state-default'>
+<tr>
+	<th>Column 1</th>
+	<th>Column 2</th>
+	<th>Column 3</th>
+	<th>Column 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Bacon ipsum</td>
+	<td>dolor sit</td>
+	<td>amet</td>
+	<td>Pork</td>
+</tr>
+<tr>
+	<td>ham</td>
+	<td>shoulder </td>
+	<td>Tongue </td>
+	<td>cow </td>
+</tr>
+<tr>
+	<td>Short </td>
+	<td><a href='#' title='illustrates the stickytab closing when a link within the table is clicked.'>shank</a></td>
+	<td>t-bone shoulder</td>
+	<td>swine</td>
+</tr>
+<tr>
+	<td>bresaola </td>
+	<td>strip </td>
+	<td>steak </td>
+	<td>mignon </td>
+</tr>
+<tr>
+	<td>Short </td>
+	<td><a href='#' title='illustrates the stickytab closing when a link within the table is clicked.'>shank</a></td>
+	<td>t-bone shoulder</td>
+	<td>swine</td>
+</tr>
+</tbody>
+</table>
+
+<table id='table3'>
+<thead class='ui-state-default'>
+<tr>
+	<th>Column 1</th>
+	<th>Column 2</th>
+	<th>Column 3</th>
+	<th>Column 4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+	<td>Bacon ipsum</td>
+	<td>dolor sit</td>
+	<td>amet</td>
+	<td>Pork</td>
+</tr>
+<tr>
+	<td>ham</td>
+	<td>shoulder </td>
+	<td>Tongue </td>
+	<td>cow </td>
+</tr>
+<tr>
+	<td>bresaola </td>
+	<td>strip </td>
+	<td>steak </td>
+	<td>mignon </td>
+</tr>
+<tr>
+	<td>Short </td>
+	<td><a href='#' title='illustrates the stickytab closing when a link within the table is clicked.'>shank</a></td>
+	<td>t-bone shoulder</td>
+	<td>swine</td>
+</tr>
+<tr>
+	<td>fatback</td>
+	<td>bitlong</td>
+	<td>rump</td>
+	<td>corned beef</td>
+</tr><tr>
+	<td>Bacon ipsum</td>
+	<td>dolor sit</td>
+	<td>amet</td>
+	<td>Pork</td>
+</tr>
+<tr>
+	<td>ham</td>
+	<td>shoulder </td>
+	<td>Tongue </td>
+	<td>cow </td>
+</tr>
+<tr>
+	<td>bresaola </td>
+	<td>strip </td>
+	<td>steak </td>
+	<td>mignon </td>
+</tr>
+<tr>
+	<td>Short </td>
+	<td><a href='#' title='illustrates the stickytab closing when a link within the table is clicked.'>shank</a></td>
+	<td>t-bone shoulder</td>
+	<td>swine</td>
+</tr>
+<tr>
+	<td>fatback</td>
+	<td>bitlong</td>
+	<td>rump</td>
+	<td>corned beef</td>
+</tr>
+</tbody>
+</table>
+<br />
+<br />
+<button id='button1'>Make Table 1 Sticky</button>
+<button id='button2'>Make Table 2 Sticky</button>
+<button id='button3'>Make Table 3 Sticky</button>
+
+
+
+
+<br />
+<br />
+<h3>The following text is here just so show how the tabs react when the page is scrolled.</h3>
+<p>Bacon ipsum dolor sit amet shank turkey ground round rump, prosciutto porchetta pancetta short ribs tri-tip salami pork belly jerky beef doner pork. Pork chop short ribs salami kielbasa frankfurter, pork ham ground round spare ribs pork loin ribeye ball tip drumstick ham hock. Bacon t-bone venison chicken, bresaola tri-tip ball tip ribeye cow brisket ground round shank. Ham meatball boudin doner, pork strip steak landjaeger corned beef short loin.</p>
+
+<p>Porchetta pancetta brisket, venison pork belly tongue tail short ribs pastrami flank. Ribeye beef ribs corned beef venison. Swine shankle chicken sirloin cow biltong. Spare ribs beef pig pork belly porchetta pork pancetta rump salami boudin sausage. Hamburger boudin tri-tip sirloin andouille, ground round sausage beef flank corned beef.</p>
+
+<p>Filet mignon pork sirloin, fatback t-bone bacon spare ribs ham hock landjaeger capicola venison. Sirloin venison shankle ball tip, landjaeger andouille doner meatball turducken pork chop. Salami chuck hamburger fatback pork loin filet mignon bacon. Meatball beef boudin pancetta beef ribs prosciutto fatback pork belly corned beef venison landjaeger pork loin.</p>
+
+<p>Strip steak bacon venison, ball tip shankle kevin hamburger chuck. Pork chuck ball tip shoulder pastrami, flank boudin meatball. Ground round kevin jowl drumstick, tail ham tenderloin shankle turkey andouille flank frankfurter meatloaf spare ribs leberkas. Meatball pig shank biltong beef ribs boudin doner jowl. Shankle sausage jerky corned beef filet mignon strip steak pork loin pancetta pork chop swine short ribs. Cow pancetta filet mignon, kevin porchetta turkey chicken capicola swine shoulder drumstick.</p>
+
+<p>Ham hock jowl chicken sirloin prosciutto biltong. Pancetta sirloin ham hock, swine pastrami pork loin jowl ham. Porchetta landjaeger frankfurter, swine beef pork belly ribeye drumstick shankle chicken. Pork chop shank jowl kielbasa meatball. Filet mignon salami chicken, shoulder jowl prosciutto turducken ham hock corned beef venison pork pork chop. Shank sirloin frankfurter kielbasa, beef ribs landjaeger biltong.</p>
+
+
+<p>Filet mignon pork sirloin, fatback t-bone bacon spare ribs ham hock landjaeger capicola venison. Sirloin venison shankle ball tip, landjaeger andouille doner meatball turducken pork chop. Salami chuck hamburger fatback pork loin filet mignon bacon. Meatball beef boudin pancetta beef ribs prosciutto fatback pork belly corned beef venison landjaeger pork loin.</p>
+
+<p>Strip steak bacon venison, ball tip shankle kevin hamburger chuck. Pork chuck ball tip shoulder pastrami, flank boudin meatball. Ground round kevin jowl drumstick, tail ham tenderloin shankle turkey andouille flank frankfurter meatloaf spare ribs leberkas. Meatball pig shank biltong beef ribs boudin doner jowl. Shankle sausage jerky corned beef filet mignon strip steak pork loin pancetta pork chop swine short ribs. Cow pancetta filet mignon, kevin porchetta turkey chicken capicola swine shoulder drumstick.</p>
+
+<script type='text/javascript'>
+(function ( $ ) {
+
+	$('button').button();
+	
+	$('#button1').on('click',function(event){
+		event.preventDefault();
+		$('#table1').stickytab({"tabTitle":"My Tab!"});
+		$(this).hide();
+		});
+	$('#button2').on('click',function(event){
+		event.preventDefault();
+		$('#table2').stickytab({"tabTitle":"Another Tab!"});
+		$(this).hide();
+		});
+	
+	$('#button3').on('click',function(event){
+		event.preventDefault();
+		$('#table3').stickytab({"tabTitle":"Yet Another Tab!"});
+		$(this).hide();
+		});
+}( jQuery ));
+</script>
+</body>
+</html>
