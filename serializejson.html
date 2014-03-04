@@ -61,17 +61,6 @@ fieldset	{margin-bottom:.5em;}
 <input type='submit' value='Serialize' /> <button id='button1'>Serialize Fieldset 1</button> <button id='button2'>Serialize Edited in Form 1</button>
 </form>
 
-<form action="#" id="form2">
-<input name="msgtype" value="feedback" type="hidden">
-<fieldset>
-	<legend>Form 2</legend>
-	<div><label><input name="sender"  placeholder='Email Address' type="email"></label></div>
-	<div><label><input name="subject"  placeholder='Subject' type="text"></label></div>
-	<div><label><textarea name="body"  placeholder='message'></textarea></label></div>
-	<div><label><input type='checkbox' name='checkbox' checked='checked' value='' /> Checkboxes returned as 'on'</label></div>
-</fieldset>
-<input type='submit' value='Serialize' />
-</form>
 
 <script type='text/javascript'>
 (function ( $ ) {
@@ -103,12 +92,6 @@ fieldset	{margin-bottom:.5em;}
 		output(sfo);
 		});
 	
-	$('#form2').on('submit',function(event){
-		event.preventDefault();
-		var sfo = $(this).serializeJSON();
-		output(sfo);
-		});
-
 	$('#button1').on('click',function(event){
 		event.preventDefault();
 		var sfo = $('fieldset:first','#form1').serializeJSON({'sanity':true});
@@ -116,7 +99,7 @@ fieldset	{margin-bottom:.5em;}
 		});
 	$('#button2').on('click',function(event){
 		event.preventDefault();
-		var sfo = $('fieldset:first','#form1').serializeJSON({'sanity':true,'selector':'.edited'});
+		var sfo = $('#form1').serializeJSON({'sanity':true,'selector':'.edited'});
 		output(sfo);
 		});
 }( jQuery ));
