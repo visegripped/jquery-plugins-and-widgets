@@ -28,6 +28,7 @@
 
 				$("<div \/>").addClass("ui-stickytab-inner")
 					.append($tab)
+					.width(this.element.outerWidth())
 					.append($("<div \/>").addClass('ui-widget-content ui-stickytab-content'))
 					.appendTo(this.sticky);
 
@@ -38,11 +39,15 @@
 
 				$tab
 					.width($tab.width()) //need a set width on this. Rotate requires a block element.
-					.css({'display':'block','right':1,'top':($tab.outerWidth() - 30),'transform':'rotate(90deg)','transform-origin':' 100% 100% 0','cursor':'pointer'})
+					.css({'display':'block','right':1,'transform':'rotate(90deg)','transform-origin':' 100% 100% 0','top':($tab.outerWidth() - 30),'cursor':'pointer'}) //
 					.on('click.stickytab',function(){
 						self.toggleSticky();
 						})
-			
+				//in some browsers, transform-origin compensates for the axis the tab is rotated on. In some, like IE, it's not. The code below will compensate.
+				//a difference of 2 in the check and the re-position is present so that a little play occurs between the tab and the body.
+				if(self.sticky.width() - $tab.position().left > 2)	{
+					$tab.css('right',((self.sticky.width() - $tab.position().left) * -1) + 2);
+					}
 				self._moveAnimate();
 				self._handleDelegation();
 				self._addCloseButton();
